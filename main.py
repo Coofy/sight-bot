@@ -1,4 +1,11 @@
 # -*- coding: utf-8 -*-
+"""
+Created on Fri Nov  8 20:33:13 2019
+
+@author: icaro-lima
+
+https://github.com/tensorflow/hub/blob/master/examples/colab/object_detection.ipynb
+"""
 
 # For running inference on the TF-Hub module.
 import tensorflow as tf
