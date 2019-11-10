@@ -42,6 +42,7 @@ def display_image(image):
   plt.figure(figsize=(20, 15))
   plt.grid(False)
   plt.imshow(image)
+  plt.show()
 
 
 def download_and_resize_image(url, new_width=256, new_height=256,
