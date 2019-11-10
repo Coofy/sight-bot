@@ -143,7 +143,7 @@ image_path = "frame.jpg"
 
 ###############################################################################
 
-module_handle = "https://tfhub.dev/google/faster_rcnn/openimages_v4/inception_resnet_v2/1"
+module_handle = "https://tfhub.dev/google/openimages_v4/ssd/mobilenet_v2/1"
 
 detector = hub.load(module_handle).signatures['default']
 
@@ -179,6 +179,8 @@ def run_detector(detector, path):
 
 ###############################################################################
 
+run_detector(detector, image_path)
+run_detector(detector, image_path)
 run_detector(detector, image_path)
 
 ###############################################################################
