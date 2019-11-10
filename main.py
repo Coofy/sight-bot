@@ -26,6 +26,9 @@ from PIL import ImageDraw
 from PIL import ImageFont
 from PIL import ImageOps
 
+# For saving images
+import imageio
+
 # For measuring the inference time.
 import time
 
@@ -168,7 +171,9 @@ def run_detector(detector, path):
   image_with_boxes = draw_boxes(
       img.numpy(), result["detection_boxes"],
       result["detection_class_entities"], result["detection_scores"])
-
+  
+  imageio.imwrite('frame_boxes.jpg', image_with_boxes)
+  
   display_image(image_with_boxes)
 
 ###############################################################################
