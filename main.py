@@ -5,6 +5,9 @@ Created on Mon Nov 11 04:11:27 2019
 @author: icaro
 """
 
+# For measuring the inference time.
+import time
+
 import numpy as np
 import os
 import pathlib
@@ -65,7 +68,11 @@ def run_inference_for_single_image(model, image):
     input_tensor = input_tensor[tf.newaxis, ...]
 
     # Run inference
+    start_time = time.time()
     output_dict = model(input_tensor)
+    end_time = time.time()
+
+    print("Inference time: ", end_time-start_time)
 
     # All outputs are batches tensors.
     # Convert to numpy arrays, and take index[0] to remove the batch dimension.
@@ -113,4 +120,6 @@ def show_inference(model, image_path):
     display(Image.fromarray(image_np))
 
 
+show_inference(detection_model, 'frame.jpg')
+show_inference(detection_model, 'frame.jpg')
 show_inference(detection_model, 'frame.jpg')
