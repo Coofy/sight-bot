@@ -1,5 +1,7 @@
 # sight-bot
 
+Based on this repository: [object_detection_tutorial](https://github.com/tensorflow/models/blob/master/research/object_detection/object_detection_tutorial.ipynb)
+
 ## Setup Windows
 
 * CUDA: v10.0
