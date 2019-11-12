@@ -124,6 +124,9 @@ while(True):
     # Capture frame-by-frame
     ret, frame = cap.read()
 
+    if not ret:
+        break
+
     show_inference_frame(detection_model, cv2.cvtColor(frame,
                                                        cv2.COLOR_RGB2BGR))
 
