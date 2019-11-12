@@ -40,7 +40,7 @@ PATH_TO_LABELS = 'models/research/object_detection/data/mscoco_label_map.pbtxt'
 category_index = label_map_util.create_category_index_from_labelmap(
     PATH_TO_LABELS, use_display_name=True)
 
-model_name = 'ssd_mobilenet_v1_coco_2017_11_17'
+model_name = 'ssd_mobilenet_v1_coco_2018_01_28'
 detection_model = load_model(model_name)
 
 
@@ -118,7 +118,7 @@ def show_inference_frame(model, frame_bgr):
     cv2.imshow('Frame', cv2.cvtColor(frame_bgr, cv2.COLOR_BGR2RGB))
 
 
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture('moving.mkv')
 
 while(True):
     # Capture frame-by-frame
