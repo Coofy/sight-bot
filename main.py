@@ -101,4 +101,31 @@ def show_inference(model, image_path):
     cv2.waitKey(0)
 
 
-show_inference(detection_model, 'frame.jpg')
+def show_inference_frame(model, frame_bgr):
+    # Actual detection.
+    output_dict = run_inference_for_single_image(model, frame_bgr)
+    # Visualization of the results of a detection.
+    vis_util.visualize_boxes_and_labels_on_image_array(
+        frame_bgr,
+        output_dict['detection_boxes'],
+        output_dict['detection_classes'],
+        output_dict['detection_scores'],
+        category_index,
+        instance_masks=output_dict.get('detection_masks_reframed', None),
+        use_normalized_coordinates=True,
+        line_thickness=8)
+
+    cv2.imshow('Frame', cv2.cvtColor(frame_bgr, cv2.COLOR_BGR2RGB))
+
+
+cap = cv2.VideoCapture(0)
+
+while(True):
+    # Capture frame-by-frame
+    ret, frame = cap.read()
+
+    show_inference_frame(detection_model, cv2.cvtColor(frame,
+                                                       cv2.COLOR_RGB2BGR))
+
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
