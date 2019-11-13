@@ -1,3 +1,7 @@
 .vscode/
-1.0.0/
 models/
+
+
+# All rights reserved
+frozen_inference_graph.pb
+labelmap.pbtxt
