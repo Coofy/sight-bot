@@ -78,10 +78,10 @@ with tf.compat.v1.Session(graph=detection_graph) as sess:
     while(True):
         ret, frame = cap.read()
 
-        frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-
         if not ret:
             break
+
+        frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 
         inference_result = run_inference(sess, detection_graph, frame)
         image_result_np = draw_inference_result(frame, category_index,
