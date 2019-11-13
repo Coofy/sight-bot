@@ -1,3 +1,5 @@
+import time
+
 import cv2
 import numpy as np
 from PIL import Image
@@ -10,10 +12,8 @@ from object_detection.utils import visualization_utils as vis_util
 
 
 def load_category_index(path):
-    label_map = label_map_util.load_labelmap(path)
-    categories = label_map_util.convert_label_map_to_categories(
-        label_map, 4, use_display_name=True)
-    category_index = label_map_util.create_category_index(categories)
+    category_index = label_map_util.create_category_index_from_labelmap(
+        path, use_display_name=True)
 
     return category_index
 
@@ -30,26 +30,28 @@ def load_frozen_graph(path):
     return detection_graph
 
 
-def run_inference(detection_graph, image_np):
-    image_expanded_np = np.expand_dims(image_np, axis=0)
+def run_inference(sess, detection_graph, image_np):
+    image_expanded_np = np.expand_dims(image_np, 0)
 
     with detection_graph.as_default():
-        with tf.compat.v1.Session(graph=detection_graph) as sess:
-            image_tensor = detection_graph.get_tensor_by_name('image_tensor:0')
-            boxes = detection_graph.get_tensor_by_name('detection_boxes:0')
-            scores = detection_graph.get_tensor_by_name('detection_scores:0')
-            classes = detection_graph.get_tensor_by_name('detection_classes:0')
-            num_detections = detection_graph.get_tensor_by_name(
-                'num_detections:0')
+        image_tensor = detection_graph.get_tensor_by_name('image_tensor:0')
+        boxes = detection_graph.get_tensor_by_name('detection_boxes:0')
+        scores = detection_graph.get_tensor_by_name('detection_scores:0')
+        classes = detection_graph.get_tensor_by_name('detection_classes:0')
+        num_detections = detection_graph.get_tensor_by_name(
+            'num_detections:0')
 
-            (boxes, scores, classes, num_detections) = \
-                sess.run([boxes, scores, classes, num_detections],
-                         feed_dict={image_tensor: image_expanded_np})
+        start_time = time.time()
+        (boxes, scores, classes, num_detections) = \
+            sess.run([boxes, scores, classes, num_detections],
+                     feed_dict={image_tensor: image_expanded_np})
+        end_time = time.time()
+        print("Inference time: %d" % (int((end_time-start_time) * 1000)))
 
-            return (boxes, scores, classes, num_detections)
+        return (boxes, scores, classes, num_detections)
 
 
-def draw_inference_result(image, category_index, inference_result):
+def draw_inference_result(image_np, category_index, inference_result):
     (boxes, scores, classes, num_detections) = inference_result
 
     vis_util.visualize_boxes_and_labels_on_image_array(
@@ -69,10 +71,23 @@ print("Hello, World!")
 category_index = load_category_index('labelmap.pbtxt')
 detection_graph = load_frozen_graph('frozen_inference_graph.pb')
 
-image_np = np.array(Image.open("frame.jpg"))
-inference_result = run_inference(detection_graph, image_np)
-image_result_np = draw_inference_result(image_np, category_index,
-                                        inference_result)
+cap = cv2.VideoCapture(0)
 
-cv2.imshow('Result', cv2.cvtColor(image_np, cv2.COLOR_BGR2RGB))
-cv2.waitKey(0)
+# Reuse session
+with tf.compat.v1.Session(graph=detection_graph) as sess:
+    while(True):
+        ret, frame = cap.read()
+
+        frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+
+        if not ret:
+            break
+
+        inference_result = run_inference(sess, detection_graph, frame)
+        image_result_np = draw_inference_result(frame, category_index,
+                                                inference_result)
+
+        cv2.imshow('Frame', cv2.cvtColor(image_result_np, cv2.COLOR_BGR2RGB))
+
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
