@@ -26,7 +26,7 @@ pip install .
 pip install opencv-python
 ```
 
-### Running
+## Running
 ```
 python main.py
 
