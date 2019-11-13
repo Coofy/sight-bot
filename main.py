@@ -71,7 +71,7 @@ print("Hello, World!")
 category_index = load_category_index('labelmap.pbtxt')
 detection_graph = load_frozen_graph('frozen_inference_graph.pb')
 
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture('rotation_crosshair_0.mkv')
 
 # Reuse session
 with tf.compat.v1.Session(graph=detection_graph) as sess:
