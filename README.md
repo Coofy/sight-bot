@@ -4,7 +4,7 @@
 ```
 Miniconda:
 
-conda create -n perception-tf1.15 pip python=3.7
+conda create -n perception-tf1.15 pip python=3.7 pyqt=5
 ```
 
 ### Tensorflow
@@ -24,6 +24,15 @@ pip install .
 ### OpenCV
 ```
 pip install opencv-python
+```
+
+### LabelImg
+```
+cd addons/labelImg
+
+sudo apt-get install pyqt5-dev-tools
+sudo pip install -r requirements/requirements-linux-python3.txt
+make qt5py3
 ```
 
 ## Running
