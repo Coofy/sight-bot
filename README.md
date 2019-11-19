@@ -35,10 +35,16 @@ sudo pip install -r requirements/requirements-linux-python3.txt
 make qt5py3
 ```
 
+## Training
+### Single/Poor GPU
+```
+TF_ENABLE_GPU_GARBAGE_COLLECTION=false TF_FORCE_GPU_ALLOW_GROWTH=true python train.py --logtostderr --train_dir=training/ --pipeline_config_path=training/faster_rcnn_inception_v2_coco.config
+```
+
 ## Running
 ```
 python main.py
 
-# Force CPU
+### Force CPU
 CUDA_VISIBLE_DEVICES=-1 python main.py
 ```
