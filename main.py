@@ -68,8 +68,8 @@ def draw_inference_result(image_np, category_index, inference_result):
 
 print("Hello, World!")
 
-category_index = load_category_index('labelmap.pbtxt')
-detection_graph = load_frozen_graph('frozen_inference_graph.pb')
+category_index = load_category_index('workspace/training_demo/annotations/label_map.pbtxt')
+detection_graph = load_frozen_graph('workspace/training_demo/trained-inference-graphs/output_inference_graph_v1.pb/frozen_inference_graph.pb')
 
 cap = cv2.VideoCapture('rotation_crosshair_0.mkv')
 
