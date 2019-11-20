@@ -42,9 +42,9 @@ def class_text_to_int(row_label):
     # comment upper if statement and uncomment these statements for multiple labelling
     #print("----> " + FLAGS.labela)
     if row_label == 'ct head':
-        return 2
+        return 1
     elif row_label == 'tr head':
-        return 4
+        return 2
     else:
         None
 
