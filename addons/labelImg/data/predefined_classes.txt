@@ -1,4 +1,2 @@
-ct
 ct head
-tr
 tr head
