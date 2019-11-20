@@ -1,19 +1,9 @@
 item {
     id: 1
-    name: 'ct'
-}
-
-item {
-    id: 2
     name: 'ct head'
 }
 
 item {
-    id: 3
-    name: 'tr'
-}
-
-item {
-    id: 4
+    id: 2
     name: 'tr head'
 }
