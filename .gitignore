@@ -1,8 +1,8 @@
 .vscode/
 models/
 
-workspace/training_demo/training/
-!workspace/training_demo/training/ssd_mobilenet_v1_coco.config
+workspace/training_demo/training/*
+!workspace/training_demo/training/ssdlite_mobilenet_v2_coco.config
 workspace/training_demo/annotations/train.record
 workspace/training_demo/annotations/test.record
 
