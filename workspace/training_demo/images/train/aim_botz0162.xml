@@ -12,18 +12,6 @@
 	</size>
 	<segmented>0</segmented>
 	<object>
-		<name>tr</name>
-		<pose>Unspecified</pose>
-		<truncated>0</truncated>
-		<difficult>0</difficult>
-		<bndbox>
-			<xmin>434</xmin>
-			<ymin>115</ymin>
-			<xmax>540</xmax>
-			<ymax>348</ymax>
-		</bndbox>
-	</object>
-	<object>
 		<name>tr head</name>
 		<pose>Unspecified</pose>
 		<truncated>0</truncated>
@@ -35,40 +23,4 @@
 			<ymax>159</ymax>
 		</bndbox>
 	</object>
-	<object>
-		<name>tr</name>
-		<pose>Unspecified</pose>
-		<truncated>0</truncated>
-		<difficult>0</difficult>
-		<bndbox>
-			<xmin>420</xmin>
-			<ymin>132</ymin>
-			<xmax>432</xmax>
-			<ymax>154</ymax>
-		</bndbox>
-	</object>
-	<object>
-		<name>ct</name>
-		<pose>Unspecified</pose>
-		<truncated>0</truncated>
-		<difficult>0</difficult>
-		<bndbox>
-			<xmin>856</xmin>
-			<ymin>131</ymin>
-			<xmax>876</xmax>
-			<ymax>161</ymax>
-		</bndbox>
-	</object>
-	<object>
-		<name>ct</name>
-		<pose>Unspecified</pose>
-		<truncated>0</truncated>
-		<difficult>0</difficult>
-		<bndbox>
-			<xmin>937</xmin>
-			<ymin>131</ymin>
-			<xmax>961</xmax>
-			<ymax>163</ymax>
-		</bndbox>
-	</object>
-</annotation>
+	</annotation>

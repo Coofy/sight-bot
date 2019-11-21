@@ -24,30 +24,6 @@
 		</bndbox>
 	</object>
 	<object>
-		<name>ct</name>
-		<pose>Unspecified</pose>
-		<truncated>0</truncated>
-		<difficult>0</difficult>
-		<bndbox>
-			<xmin>206</xmin>
-			<ymin>103</ymin>
-			<xmax>504</xmax>
-			<ymax>644</ymax>
-		</bndbox>
-	</object>
-	<object>
-		<name>ct</name>
-		<pose>Unspecified</pose>
-		<truncated>0</truncated>
-		<difficult>0</difficult>
-		<bndbox>
-			<xmin>868</xmin>
-			<ymin>152</ymin>
-			<xmax>1005</xmax>
-			<ymax>358</ymax>
-		</bndbox>
-	</object>
-	<object>
 		<name>ct head</name>
 		<pose>Unspecified</pose>
 		<truncated>0</truncated>

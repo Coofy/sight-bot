@@ -12,18 +12,6 @@
 	</size>
 	<segmented>0</segmented>
 	<object>
-		<name>tr</name>
-		<pose>Unspecified</pose>
-		<truncated>0</truncated>
-		<difficult>0</difficult>
-		<bndbox>
-			<xmin>711</xmin>
-			<ymin>258</ymin>
-			<xmax>765</xmax>
-			<ymax>350</ymax>
-		</bndbox>
-	</object>
-	<object>
 		<name>tr head</name>
 		<pose>Unspecified</pose>
 		<truncated>0</truncated>

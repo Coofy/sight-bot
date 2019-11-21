@@ -12,18 +12,6 @@
 	</size>
 	<segmented>0</segmented>
 	<object>
-		<name>ct</name>
-		<pose>Unspecified</pose>
-		<truncated>0</truncated>
-		<difficult>0</difficult>
-		<bndbox>
-			<xmin>482</xmin>
-			<ymin>155</ymin>
-			<xmax>939</xmax>
-			<ymax>611</ymax>
-		</bndbox>
-	</object>
-	<object>
 		<name>ct head</name>
 		<pose>Unspecified</pose>
 		<truncated>0</truncated>

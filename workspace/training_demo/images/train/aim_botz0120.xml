@@ -23,16 +23,4 @@
 			<ymax>259</ymax>
 		</bndbox>
 	</object>
-	<object>
-		<name>ct</name>
-		<pose>Unspecified</pose>
-		<truncated>1</truncated>
-		<difficult>0</difficult>
-		<bndbox>
-			<xmin>1</xmin>
-			<ymin>136</ymin>
-			<xmax>437</xmax>
-			<ymax>768</ymax>
-		</bndbox>
-	</object>
-</annotation>
+	</annotation>
