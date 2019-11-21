@@ -1,6 +1,7 @@
 import time
 
 import cv2
+import mss
 import numpy as np
 from PIL import Image
 
@@ -71,23 +72,24 @@ print("Hello, World!")
 category_index = load_category_index('workspace/training_demo/annotations/label_map.pbtxt')
 detection_graph = load_frozen_graph('workspace/training_demo/trained-inference-graphs/output_inference_graph_v1.pb/frozen_inference_graph.pb')
 
-cap = cv2.VideoCapture('rotation_crosshair_0.mkv')
+windowRect = {"top": 60, "left": 68, "width": 1024, "height": 768}
 
 # Reuse session
 with tf.compat.v1.Session(graph=detection_graph) as sess:
-    while(True):
-        ret, frame = cap.read()
+    with mss.mss() as sct:
+        while(True):
+            start_time = time.time()
+            frame = np.array(sct.grab(windowRect))
+            end_time = time.time()
+            print("Grab time: %d" % (int((end_time-start_time) * 1000)))
 
-        if not ret:
-            break
+            frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 
-        frame = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+            inference_result = run_inference(sess, detection_graph, frame)
+            image_result_np = draw_inference_result(frame, category_index,
+                                                    inference_result)
 
-        inference_result = run_inference(sess, detection_graph, frame)
-        image_result_np = draw_inference_result(frame, category_index,
-                                                inference_result)
+            cv2.imshow('Frame', cv2.cvtColor(image_result_np, cv2.COLOR_BGR2RGB))
 
-        cv2.imshow('Frame', cv2.cvtColor(image_result_np, cv2.COLOR_BGR2RGB))
-
-        if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
+            if cv2.waitKey(1) & 0xFF == ord('q'):
+                break
