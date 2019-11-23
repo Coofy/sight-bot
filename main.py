@@ -88,27 +88,21 @@ def aim(inference_result, windowRect):
     print("Biggest: ", biggestScore[1][0])
     print("Biggest: ", biggestScore[0][0])
 
-    targetX = (biggestScore[0][0][1] + biggestScore[0][0][3]) / 2 - 0.5
-    targetY = (biggestScore[0][0][0] + biggestScore[0][0][2]) / 2 - 0.5
+    targetX = (biggestScore[0][0][1] + biggestScore[0][0][3]) / 2
+    targetY = (biggestScore[0][0][0] + biggestScore[0][0][2]) / 2
 
-    targetX = targetX * windowRect['width']
-    constX = 100
-    if targetX >= 0:
-        targetX += constX
-    else:
-        targetX -= constX
-
-    pyautogui.moveTo(targetX, 0)
+    pyautogui.moveTo(targetX * windowRect['width'], targetY * windowRect['height'] + windowRect['height'] / 26)
+    pyautogui.click()
 
 
 print("Hello, World!")
 
 pyautogui.FAILSAFE = False
 
-category_index = load_category_index('workspace/training_demo/annotations/label_map.pbtxt')
-detection_graph = load_frozen_graph('workspace/training_demo/trained-inference-graphs/output_inference_graph_v1.pb/frozen_inference_graph.pb')
+category_index = load_category_index('trained\\label_map.pbtxt')
+detection_graph = load_frozen_graph('trained\\frozen_inference_graph.pb')
 
-windowRect = {"top": 60, "left": 68, "width": 1024, "height": 768}
+windowRect = {"top": 32, "left": 0, "width": 1024, "height": 768}
 
 listener = mouse.Listener(on_click=on_click)
 listener.start()
