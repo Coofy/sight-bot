@@ -1,12 +1,1 @@
-.vscode/
 models/
-
-workspace/training_demo/training/*
-!workspace/training_demo/training/ssdlite_mobilenet_v2_coco.config
-workspace/training_demo/annotations/*
-!workspace/training_demo/annotations/label_map.pbtxt
-
-
-# All rights reserved
-frozen_inference_graph.pb
-labelmap.pbtxt
