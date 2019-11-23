@@ -12,6 +12,16 @@ conda create -n perception-tf1.15 pip python=3.7 pyqt=5
 pip install tensorflow==1.15
 ```
 
+#### PyAutoGUI
+```
+pip install pyautogui
+```
+
+#### Pynput
+```
+pip install pynput
+```
+
 #### object_detection
 ```
 git clone --depth 1 https://github.com/tensorflow/models
