@@ -1,0 +1,50 @@
+<annotation>
+	<folder>images</folder>
+	<filename>aim_botz0108.png</filename>
+	<path>/home/icaro-lima/Documents/Python/sight-bot/workspace/training_demo/images/aim_botz0108.png</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>1024</width>
+		<height>768</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>tr head</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>401</xmin>
+			<ymin>206</ymin>
+			<xmax>463</xmax>
+			<ymax>272</ymax>
+		</bndbox>
+	</object>
+	<object>
+		<name>ct head</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>156</xmin>
+			<ymin>216</ymin>
+			<xmax>197</xmax>
+			<ymax>251</ymax>
+		</bndbox>
+	</object>
+	<object>
+		<name>ct head</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>685</xmin>
+			<ymin>222</ymin>
+			<xmax>715</xmax>
+			<ymax>248</ymax>
+		</bndbox>
+	</object>
+	</annotation>
