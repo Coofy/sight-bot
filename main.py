@@ -1,4 +1,5 @@
 import time
+from math import sqrt
 
 import cv2
 import mss
@@ -77,23 +78,29 @@ def on_click(x, y, button, pressed):
 
 
 def aim(inference_result, windowRect):
-    print('-----------------------------------')
-    biggestScore = (None, 0, None, None)
-    n = len(inference_result[0])
-    for i in range(n):
-        if inference_result[1][0][i] > biggestScore[1]:
-            biggestScore = (inference_result[0][i], inference_result[1][i],
-            inference_result[2][i], inference_result[3][i])
+    (boxes, scores, classes, num_detections) = inference_result
+
+    nearest = None
+    for i in range(int(num_detections)):
+        if nearest is None:
+            nearest = boxes[0][i]
+        elif scores[0][i] >= 0.7:
+            ncx = (nearest[1] + nearest[3]) / 2 - 0.5
+            ncy = (nearest[0] + nearest[2]) / 2 - 0.5
+            ndc = sqrt(ncx ** 2 + ncy ** 2)
+
+            acx = (boxes[0][i][1] + boxes[0][i][3]) / 2 - 0.5
+            acy = (boxes[0][i][0] + boxes[0][i][2]) / 2 - 0.5
+            adc = sqrt(acx ** 2 + acy ** 2)
+
+            if adc < ndc:
+                nearest = boxes[0][i]
     
-    print("Biggest: ", biggestScore[1][0])
-    print("Biggest: ", biggestScore[0][0])
+    mid_x = (nearest[1] + nearest[3]) / 2
+    mid_y = (nearest[0] + nearest[2]) / 2
 
-    targetX = (biggestScore[0][0][1] + biggestScore[0][0][3]) / 2
-    targetY = (biggestScore[0][0][0] + biggestScore[0][0][2]) / 2
-
-    pyautogui.moveTo(targetX * windowRect['width'], targetY * windowRect['height'] + windowRect['height'] / 26)
+    pyautogui.moveTo(mid_x * windowRect['width'], mid_y * windowRect['height'] + windowRect['height'] / 26)
     pyautogui.click()
-
 
 print("Hello, World!")
 
