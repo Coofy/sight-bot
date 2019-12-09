@@ -2,6 +2,8 @@
 
 [![See on Youtube](Youtube.png)](https://youtu.be/56ukHSWOtjg)
 
+If you want to see how the training was done: https://github.com/Coofy/sight-bot-train
+
 ## Setup
 ```
 Miniconda:
