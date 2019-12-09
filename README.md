@@ -1,5 +1,7 @@
 # Sight Bot
 
+[![See on Youtube](Youtube.png)](https://youtu.be/56ukHSWOtjg)
+
 ## Setup
 ```
 Miniconda:
